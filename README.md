@@ -1,0 +1,1 @@
+# group34--Innovation_managment
