@@ -1,0 +1,14 @@
+# Files produced by the notebooks: PATSTAT extracts, licensed, never committed
+outputs/
+*.csv
+*.parquet
+*.npy
+
+# Secrets
+.env
+
+# Python and Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
