@@ -1,0 +1,195 @@
+# The sector rule of Step 0, version 3 (the accepted rule).
+# step0_sector_definition.ipynb holds the same lists in its cells; tests/test_notebook_in_sync.py checks that the
+# two are identical, so a change made in one place only makes the tests fail.
+# All texts are compared lower-cased. Latin-script terms must start a word ('biped' also finds 'bipedal').
+version: v3
+description: 'Humanoid robots: a family is in the sector when its title names a humanoid robot. Accepted on 12 November 2026:
+  strict precision 37/40 = 92.5% (95% Wilson interval 80.1-97.4%) on an independent random sample.'
+window:
+  year_min: 2000
+  year_max: 2025
+  last_complete_year: 2022
+  year: earliest priority year of the DOCDB family
+  ipr_types_sector:
+  - PI
+  dummy_id_from: 900000000
+block_A:
+  strong_terms:
+  - humanoid
+  - biped
+  - two-legged
+  - two legged
+  - android robot
+  - anthropomorphic robot
+  - human-like robot
+  - humanlike robot
+  - human like robot
+  - human-shaped robot
+  - human shaped robot
+  - human-type robot
+  - human type robot
+  - human-form robot
+  - humanoïde
+  - humanoider
+  - umanoide
+  - zweibeinig
+  - bipède
+  - 人形机器人
+  - 人形機器人
+  - 仿人机器人
+  - 仿人機器人
+  - 类人机器人
+  - 類人機器人
+  - 双足机器人
+  - 雙足機器人
+  - 双足步行
+  - 拟人机器人
+  - 仿人灵巧手
+  - 仿人手
+  - 类人手
+  - ヒューマノイド
+  - 人型ロボット
+  - 人形ロボット
+  - 人間型ロボット
+  - 二足歩行
+  - 휴머노이드
+  - 인간형 로봇
+  - 이족 보행
+  - 이족보행
+  weak_terms:
+  - two-legged
+  - two legged
+  - zweibeinig
+  - umanoide
+  robot_words:
+  - robot
+  - roboter
+  - robô
+  - 机器人
+  - 機器人
+  - ロボット
+  - 로봇
+  robot_context_codes:
+  - B25J
+  - B62D57
+  - G05B
+  - G05D
+  - G06N3/008
+  - A63H
+  - Y10S901
+exclusions:
+  exo_codes:
+  - B25J9/0006
+  - A61F2/
+  - A61H3/
+  exo_terms:
+  - exoskelet
+  - exo-skelet
+  - exosuit
+  - exo-suit
+  - wearable robot
+  - wearer
+  - worn by
+  - orthosis
+  - orthotic
+  - prosthe
+  - walking assist
+  - walking aid
+  - power assist suit
+  - assist suit
+  dummy_terms:
+  - mannequin
+  - manikin
+  - crash test dummy
+  - test dummy
+  - anthropomorphic test device
+  - dummy
+  virtual_terms:
+  - avatar
+  - virtual character
+  - virtual human
+  - digital human
+  - animated character
+  - game character
+  - virtual robot
+  - character animation
+  - 3d character
+  toy_terms:
+  - toy
+  - toys
+  - doll
+  - dolls
+  - puppet
+  - puppets
+  - plaything
+version_2:
+  part_words:
+  - arm
+  - arms
+  - hand
+  - hands
+  - wrist
+  - wrists
+  - finger
+  - fingers
+  - manipulator
+  - manipulators
+  - gripper
+  - grippers
+  - palm
+  - elbow
+  - shoulder
+  part_modifiers:
+  - robot
+  - robotic
+  - dexterous
+  - mechanical
+  - flexible
+  - bionic
+  - multi-finger
+  - multi-fingered
+  - five-finger
+  - five-fingered
+  - soft
+  part_adjectives:
+  - humanoid
+  - anthropomorphic
+  - human-like
+  - humanlike
+  part_compounds:
+  - 仿人灵巧手
+  - 仿人手
+  - 类人手
+  other_sense: humanoid intelligen
+version_3:
+  term_robot_terms:
+  - humanoid
+  - biped
+  - bipedal
+  - android
+  - anthropomorphic
+  - human-like
+  - humanlike
+  - human like
+  - human-shaped
+  - human shaped
+  - human-type
+  - human type
+  - human-form
+  - two-legged
+  - two legged
+  term_robot_compounds:
+  - 人形机器人
+  - 人形機器人
+  - 仿人机器人
+  - 仿人機器人
+  - 类人机器人
+  - 類人機器人
+  - 双足机器人
+  - 雙足機器人
+  - 拟人机器人
+  - 人型ロボット
+  - 人形ロボット
+  - 人間型ロボット
+  - 인간형 로봇
+  - 휴머노이드 로봇
