@@ -1,0 +1,24 @@
+# PATSTAT data are licensed: they stay on TIP and never enter git.
+outputs/
+data/
+*.csv
+*.csv.gz
+*.gz
+*.parquet
+*.pkl
+*.pickle
+*.html
+*.png
+*.xlsx
+# ...except our hand labels (family ID and label only, no text).
+!labels/*.csv
+
+# Secrets: keys are read from environment variables, never written in a file.
+.env
+*.key
+
+# Python and Jupyter
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+*.pyc
