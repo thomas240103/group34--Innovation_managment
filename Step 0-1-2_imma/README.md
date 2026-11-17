@@ -4,7 +4,7 @@ Innovation Management, Politecnico di Torino, 2026. Sector: humanoid robots. Cli
 
 This repository holds the code of our patent landscape. The analysis runs on PATSTAT, on the EPO TIP platform. Each notebook explains every result in a text cell under the code that produced it.
 
-The numbers below come from the run of 13 November 2026 on PATSTAT PROD. TIP reloads its data from time to time, so a later run can give slightly different numbers.
+The numbers below come from the runs on PATSTAT PROD of 13 November 2026 (Steps 0 and 1) and 17 November 2026 (Steps 2 and 3). TIP reloads its data from time to time, so a later run can give slightly different numbers.
 
 ## Contents
 
@@ -13,6 +13,7 @@ The numbers below come from the run of 13 November 2026 on PATSTAT PROD. TIP rel
 | `step0_sector_definition.ipynb` | **Step 0.** Defines the humanoid sector, measures its precision on samples read by hand, compares the rule with text methods (BM25, Patent SBERT), builds the applicant names and saves the tables the next steps read. |
 | `step1_volume_growth.ipynb` | **Step 1.** Size and growth of the sector against all patents and robotics; technology mix; geography; who files (firms, universities). |
 | `step2_concentration_subfields.ipynb` | **Step 2.** Concentration of applicants (CR4, CR8, HH, Gini, Lorenz curve, Lotka), leaders and entrants, the subfields that grow, and a PEST analysis for Electrolux. |
+| `step3_present_score.ipynb` | **Step 3.** Citations of the sector (Tutorial 3: origin, categories, networks, science, knowledge spillovers by country) and the present score of the top firms (Tutorial 4: Volume, Influence, Success, Globalization, their refinements, one ranking with weighted RRF, robustness), checked against the OECD Patent Quality Indicators. |
 | `config/sector_rule_v3.yaml` | The accepted sector rule: terms, codes, exclusions, window. |
 | `src/sector_rule.py` | The rule as functions: from a table of families to the column `in_sector_v3`. |
 | `src/names.py` | Harmonisation of applicant names (brand key, aliases) and the pairwise precision, recall and F1 against the gold standard. |
@@ -23,7 +24,7 @@ The numbers below come from the run of 13 November 2026 on PATSTAT PROD. TIP rel
 
 The notebooks contain their code in full, so each one can be read and run on its own. `src/` holds a copy of the code that the steps share, and the tests keep the copy and the notebooks identical: if one is changed without the other, the tests fail.
 
-The notebooks run in this order: Step 0, then Step 1, then Step 2. Step 0 saves the tables that Steps 1 and 2 read.
+The notebooks run in this order: Step 0, then Steps 1, 2 and 3. Step 0 saves the tables that the other steps read. Step 3 also reads the OECD Patent Quality Indicators if they are in `~/data/OECD` (see "Data and licence"); without them it skips that one check.
 
 ## The sector (Step 0)
 
@@ -106,7 +107,7 @@ We made the sector smaller on purpose. Every result of Steps 1 to 4 (growth, cou
 3. **R and W**, the two attempts to win back families, did not reach 90% on their own new samples, so they stay out.
 
 **What the smaller sector costs, and what it buys.**
-- **It costs recall.** The sector misses about 30% of the humanoid families of the wide net, more of them in 2000–2009. Its counts are a lower bound, and Step 1 shows the effect on growth with a sensitivity check. Some known players (Boston Dynamics, Tesla, Unitree, 1X, Hyundai) are missing, most likely because their patents do not name a humanoid robot in the title; we check this before Step 3.
+- **It costs recall.** The sector misses about 30% of the humanoid families of the wide net, more of them in 2000–2009. Its counts are a lower bound, and Step 1 shows the effect on growth with a sensitivity check. Some known players (Boston Dynamics, Tesla, 1X, Hyundai) are missing and others have few families (Unitree 5, filed as Hangzhou Yushu Technology), most likely because their patents do not name a humanoid robot in the title; Step 3 (Section 2.4) shows where their robot patents are.
 - **It buys results that are about humanoid robots.** With the 5,808 families of blocks A–D, about 2,200 families (4 in 10) would not be humanoid robots. With version 3, about 9 in 10 are. The intervals are wide, because each sample has 40 families, but every rule was tested on families that had not been used to build it.
 
 **Families and patents.** The 2,907 families hold 3,714 applications (patents of invention), about 1.3 per family. We count families, not applications: an invention filed in China, the US and Europe is one invention, not three.
@@ -125,15 +126,23 @@ We made the sector smaller on purpose. Every result of Steps 1 to 4 (growth, cou
 - **Who files:** universities hold 47.3% of the families of 2017–2022 (fractional counting).
 
 **Step 2: who leads**
-- **Low concentration:** 724 applicants; CR4 12.5%; HH 0.008, which is equivalent to 133 applicants of equal size; Gini 0.50. Among firms only (240) it is higher: CR4 27.3%, HH 0.027 (37 firms of equal size).
+- **Low concentration:** 723 applicants; CR4 12.6%; HH 0.008, which is equivalent to 132 applicants of equal size; Gini 0.50. Among firms only (239) it is higher: CR4 27.9%, HH 0.028 (36 firms of equal size).
 - **Consolidation:** on three-year windows, CR4 rises from 15% (2012) to 30% (2022).
 - **Leaders:** of the 15 largest applicants, 12 are Chinese; the other three are Figure AI, Honda and Aldebaran/SoftBank. Nine are recent entrants, six of them from 2023–2025.
-- **Known players missing.** Boston Dynamics, Tesla, Unitree, Hyundai, 1X and Electrolux have no or almost no family in the sector. This is a limit of a title-based rule, stated in the report.
+- **Known players missing.** Boston Dynamics, Tesla, Hyundai, 1X and Electrolux have no family in the sector, Unitree 5 (as Hangzhou Yushu Technology, rank 108) and Agility Robotics 1. This is a limit of a title-based rule, stated in the report.
+- **One name joined by hand.** SoftBank Robotics Europe written in Chinese characters escapes the brand key, which reads Latin letters only; Step 2 joins it to Aldebaran (12 families, all already Aldebaran's).
 - **Subfields:** legged locomotion and robot navigation codes grow faster than the sector.
+
+**Step 3: the present position of the top firms**
+- **Who can be scored.** 8 firms have at least 10 mature families (priority year up to 2021); 59% of the sector's families are more recent. The younger firms (the large Chinese entrants of 2023-2025 and Figure AI) are passed to Step 4 with their early signals (PCT applications: Figure AI 18%, the Chinese entrants 0-3%).
+- **Present score** (weighted Reciprocal Rank Fusion of Volume, Influence, Success and Globalization): a top group of four, UBTECH 87, Honda 87, Samsung 87 and Aldebaran 82, clearly above Toyota 68, Tmsuk 67 and Kawada 60. The group is the same in all 18 variants of the robustness checks (weights, method, measures, self-citations, legal status); the order inside it is not.
+- **Four profiles.** UBTECH: the largest and most granted recent portfolio, filed mostly in China. Honda: the pioneer, almost no family since 2015, a quarter of its citations its own. Samsung: the most cited portfolio, mostly by others. Aldebaran: the only global portfolio and the only broad European protection (EP patents validated in 12.5 states on average).
+- **OECD check.** The OECD Patent Quality Indicators cover 7% of our families (EP and US patents) and rank Aldebaran first among the four. Computed with the OECD method from PATSTAT for 781 families, the index keeps the same top group, Aldebaran first and UBTECH close to Honda and Samsung.
+- **Knowledge flows.** Citations stay in the inventors' country 1.6 times more than chance (applicant citations 1.7, examiner citations 1.5); beyond the border distance hardly matters. Chinese patents are cited almost only by Chinese ones.
 
 ## Checks before a result is used
 
-1. Every notebook runs from top to bottom with **Restart & Run All**, in the order Step 0 → Step 1 → Step 2.
+1. Every notebook runs from top to bottom with **Restart & Run All**, in the order Step 0 → Step 1 → Step 2 → Step 3.
 2. Every number written in a text cell is checked against the output above it after the final run.
 3. The date of the run that produced the numbers is written at the top of this README. A count that changes between two runs is first checked against a TIP data update (the sector had 2,907 families in every run so far).
 4. Every rule is fixed before the sample that measures it is read, and every attempt stays in the table above, accepted or not.
@@ -144,7 +153,8 @@ We made the sector smaller on purpose. Every result of Steps 1 to 4 (growth, cou
 PATSTAT data are licensed and stay on TIP. Git does not hold:
 - any data file (csv, parquet, gz, pickle) or the `outputs/` and `data/` folders;
 - reading sheets, which contain titles and abstracts: `labels/` keeps only family IDs and labels;
-- API keys. If a notebook calls an external service, the key is read from an environment variable and never written in a file.
+- API keys. If a notebook calls an external service, the key is read from an environment variable and never written in a file;
+- the **OECD Patent Quality Indicators** (August 2026), which Step 3 uses as a check. They are free for research but given on request: fill in the form of the OECD STI Micro-data Lab (oe.cd/ipstats), download `202608_OECD_PATENT_QUALITY_EPO.7z` and `..._USPTO.7z`, extract them (`pip install py7zr`, `py7zr x <file>.7z`) into `~/data/OECD` on TIP. Cite them as "OECD Patent Quality Indicators database, August 2026".
 
 ## How to run
 
@@ -160,3 +170,4 @@ PATSTAT data are licensed and stay on TIP. Git does not hold:
 - **Missing players:** patents that describe a humanoid without naming it in the title are missed. This is why some well-known players are absent.
 - **Applicant country** is known for only 16.6% of the families. We estimate it from the office of first filing.
 - **The last three years are incomplete.** We use them only as shares, never as counts.
+- **Step 3 scores only the generation old enough to be measured** (8 firms); the young firms are for Step 4. Its other limits (citations, legal status, OECD coverage, geography) are stated at the end of the notebook, with what we did about each.
