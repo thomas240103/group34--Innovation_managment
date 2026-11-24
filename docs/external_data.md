@@ -2,7 +2,7 @@
 
 Some inputs cannot go on GitHub: the files are too large (GitHub refuses files over 100 MB), their licence does not allow redistribution, or they are copyrighted papers. The group shares them in a Drive folder:
 
-**Drive folder:** _link to be added by Imma_ (`Group34_shared_data_and_papers.zip`)
+**Drive folder:** https://drive.google.com/drive/folders/1DjdcxtnfExpaFGJqSeTVUsMVek4bCpYx (`Group34_shared_data_and_papers.zip`, shared with the members of the group only: ask Imma for access)
 
 | What | In the Drive folder | Official source | Used by |
 |---|---|---|---|
