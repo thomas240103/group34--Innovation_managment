@@ -1,0 +1,81 @@
+# Humanoid sector rule (Step 0). The only place where the rule is written.
+# Step 0, Tutorial 2 notebook 20 (EPAB) and notebook 21 (text) all load this file through src/sector_rule.py.
+# After a change: run the tests (tests/), then re-run Step 0 and the notebooks that use it, on PROD.
+
+version: "v0.2 draft"             # becomes v1.0 when frozen (brain/Steps.md)
+
+window:
+  year_min: 2000                  # earliest filing year
+  year_max: 2025                  # last filing year; the last three years are incomplete in PATSTAT
+ipr_type: PI                      # invention patents only
+
+# CPC codes, without blanks. A code matches every symbol that starts with it.
+core_cpc: [B62D57/032]                                  # layer A: needs a strong keyword
+# Note: layer A is inside layer C (both need a strong keyword), so the core code adds no family by itself.
+# Layer A marks the families we are most sure about. OPEN decision: take the core code alone (after exclusions)?
+# Notebook 21 prints how many families that would add; notebook 20 shows the same on EPAB.
+robot_cpc: [B25J, B62D57, G06N3/008]                    # layer B: any robot code, plus a medium keyword
+exclude_cpc: [B25J9/0006, A63H3, A63H11, A61H3]         # exoskeletons, toys, walking aids
+prosthesis_cpc: [A61F2/58, A61F2/60, A61F2/64, A61F2/66, A61F2/68]
+exclude_prostheses: false         # OPEN decision (brain/Phase 1 Humanoid Terms.md): keep false until the overlap is read
+truth_cpc: [B62D57/032, G06N3/008]                      # the "true" sector, used only to score queries (notebook 21)
+
+# Keywords: title or abstract, case-insensitive, lower case
+strong_kw:
+  - humanoid
+  - biped
+  - two-legged robot
+  - android robot
+  - anthropomorphic robot
+  - human-like robot
+medium_kw:
+  - legged robot
+  - walking robot
+  - dexterous hand
+  - multi-fingered hand
+  - robot hand
+  - zero moment point
+  - whole-body control
+  - gait
+  - balance control
+# Legged but not humanoid: kept out of the sector and reported as an adjacent group (not deleted)
+adjacent_kw:
+  - multi-legged
+  - six-legged
+  - multiped
+  - hexapod
+# 'toy' alone is not used: it matches 'Toyota'. Use specific phrases instead.
+exclude_kw:
+  - quadruped
+  - four-legged
+  - robot dog
+  - robotic pet
+  - exoskeleton
+  - exosuit
+  - prosthe
+  - crash test dummy
+  - mannequin
+  - anthropomorphic test device
+  - toy robot
+  - toy figure
+  - robotic toy
+  - doll
+  - puppet
+
+# Step 0 counts (not a layer): one CPC code per named group, counted in the database
+segment_cpc:
+  dexterous hands: B25J15/0009
+  service robots: B25J11/008
+  home robots (household tag): B25J9/0003
+  wheeled manipulators: B25J5/007
+  entertainment robots: B25J11/003
+  communication with users: B25J11/0005
+
+# Tutorial 2, notebook 21: the six draft segments of the comparison (check each code on the USPTO CPC pages)
+comparison_segments:
+  Locomotion and balance: [B62D57]
+  Manipulation and hands: [B25J15]
+  Body hardware: [B25J17, B25J19, H02K]
+  Perception, AI and control: [G06N, G05B, G06V]
+  Human-robot interaction: [B25J11/0005, B25J11/001, B25J11/0015, B25J11/003, B25J11/0035]
+  Safety and teleoperation: [B25J9/1676, B25J13/02]

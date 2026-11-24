@@ -1,0 +1,15 @@
+# The TIP environment already provides epo.tipdata (PatstatClient), pandas, numpy, matplotlib and sqlalchemy.
+pandas
+numpy
+scipy
+matplotlib
+geopandas<1.0                 # Step 1, Section 9 (world map; 0.x versions have the Natural Earth map inside)
+pyyaml
+cleanco                       # legal forms of company names (Step 0, Section 7.2)
+umap-learn                    # Step 0, Section 6
+rank-bm25                     # Step 0, Section 6 (BM25)
+sentence-transformers         # Step 0, Section 6 (Patent SBERT) and Section 7.3 (Terrorizer's name encoder)
+networkx                      # Step 0, Section 7.3
+numba                         # Step 0, Section 7.3 (Terrorizer's bridgeness)
+scikit-learn
+pytest                        # tests/
