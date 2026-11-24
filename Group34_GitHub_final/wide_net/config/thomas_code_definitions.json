@@ -1,0 +1,983 @@
+{
+  "CPC:B62D57/032": {
+    "id": "CPC:B62D57/032",
+    "scheme": "CPC",
+    "symbol": "B62D57/032",
+    "label": "Stepping",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B62D57/032"
+    ],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b62d"
+    ]
+  },
+  "CPC:B62D57/02": {
+    "id": "CPC:B62D57/02",
+    "scheme": "CPC",
+    "symbol": "B62D57/02",
+    "label": "Ground locomotion",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B62D57/02",
+      "B62D57/021",
+      "B62D57/022",
+      "B62D57/024",
+      "B62D57/028",
+      "B62D57/032",
+      "B62D57/036"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b62d"
+    ]
+  },
+  "CPC:B62D57/028": {
+    "id": "CPC:B62D57/028",
+    "scheme": "CPC",
+    "symbol": "B62D57/028",
+    "label": "Wheels and legs",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B62D57/028"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b62d"
+    ]
+  },
+  "CPC:G06N3/008": {
+    "id": "CPC:G06N3/008",
+    "scheme": "CPC",
+    "symbol": "G06N3/008",
+    "label": "Physical artificial life",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "G06N3/008"
+    ],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_g06n"
+    ]
+  },
+  "CPC:B25J9/0006": {
+    "id": "CPC:B25J9/0006",
+    "scheme": "CPC",
+    "symbol": "B25J9/0006",
+    "label": "Human figure/exoskeletons",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/0006"
+    ],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/0003": {
+    "id": "CPC:B25J9/0003",
+    "scheme": "CPC",
+    "symbol": "B25J9/0003",
+    "label": "Home robots",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/0003"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/0009": {
+    "id": "CPC:B25J9/0009",
+    "scheme": "CPC",
+    "symbol": "B25J9/0009",
+    "label": "Construction",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/0009",
+      "B25J9/0012",
+      "B25J9/0015",
+      "B25J9/0018",
+      "B25J9/0021",
+      "B25J9/0024",
+      "B25J9/0027"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/0087": {
+    "id": "CPC:B25J9/0087",
+    "scheme": "CPC",
+    "symbol": "B25J9/0087",
+    "label": "Two arms",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/0087"
+    ],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/06": {
+    "id": "CPC:B25J9/06",
+    "scheme": "CPC",
+    "symbol": "B25J9/06",
+    "label": "Articulated arms",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/06",
+      "B25J9/065"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/1025": {
+    "id": "CPC:B25J9/1025",
+    "scheme": "CPC",
+    "symbol": "B25J9/1025",
+    "label": "Harmonic drive",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/1025"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/104": {
+    "id": "CPC:B25J9/104",
+    "scheme": "CPC",
+    "symbol": "B25J9/104",
+    "label": "Cable drive",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/104",
+      "B25J9/1045"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/1075": {
+    "id": "CPC:B25J9/1075",
+    "scheme": "CPC",
+    "symbol": "B25J9/1075",
+    "label": "Tendon drive",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/1075"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/12": {
+    "id": "CPC:B25J9/12",
+    "scheme": "CPC",
+    "symbol": "B25J9/12",
+    "label": "Electric drive",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/12",
+      "B25J9/123",
+      "B25J9/126"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/14": {
+    "id": "CPC:B25J9/14",
+    "scheme": "CPC",
+    "symbol": "B25J9/14",
+    "label": "Fluid drive",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/14",
+      "B25J9/142",
+      "B25J9/144",
+      "B25J9/146",
+      "B25J9/148"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/16": {
+    "id": "CPC:B25J9/16",
+    "scheme": "CPC",
+    "symbol": "B25J9/16",
+    "label": "Programmed control",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/16",
+      "B25J9/1602",
+      "B25J9/1605",
+      "B25J9/1607",
+      "B25J9/161",
+      "B25J9/1612",
+      "B25J9/1615",
+      "B25J9/1617",
+      "B25J9/162",
+      "B25J9/1623",
+      "B25J9/1625",
+      "B25J9/1628",
+      "B25J9/163",
+      "B25J9/1633",
+      "B25J9/1635",
+      "B25J9/1638",
+      "B25J9/1641",
+      "B25J9/1643",
+      "B25J9/1646",
+      "B25J9/1648",
+      "B25J9/1651",
+      "B25J9/1653",
+      "B25J9/1656",
+      "B25J9/1658",
+      "B25J9/1661",
+      "B25J9/1664",
+      "B25J9/1666",
+      "B25J9/1669",
+      "B25J9/1671",
+      "B25J9/1674",
+      "B25J9/1676",
+      "B25J9/1679",
+      "B25J9/1682",
+      "B25J9/1684",
+      "B25J9/1687",
+      "B25J9/1689",
+      "B25J9/1692",
+      "B25J9/1694",
+      "B25J9/1697",
+      "B25J9/20"
+    ],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/163": {
+    "id": "CPC:B25J9/163",
+    "scheme": "CPC",
+    "symbol": "B25J9/163",
+    "label": "Adaptive control",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/163"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/1633": {
+    "id": "CPC:B25J9/1633",
+    "scheme": "CPC",
+    "symbol": "B25J9/1633",
+    "label": "Force control",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/1633"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/1664": {
+    "id": "CPC:B25J9/1664",
+    "scheme": "CPC",
+    "symbol": "B25J9/1664",
+    "label": "Trajectory planning",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/1664",
+      "B25J9/1666"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/1682": {
+    "id": "CPC:B25J9/1682",
+    "scheme": "CPC",
+    "symbol": "B25J9/1682",
+    "label": "Arm coordination",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/1682"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J9/1694": {
+    "id": "CPC:B25J9/1694",
+    "scheme": "CPC",
+    "symbol": "B25J9/1694",
+    "label": "Perception control",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J9/1694",
+      "B25J9/1697"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J11/0005": {
+    "id": "CPC:B25J11/0005",
+    "scheme": "CPC",
+    "symbol": "B25J11/0005",
+    "label": "User communication",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J11/0005",
+      "B25J11/001",
+      "B25J11/0015"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J11/0015": {
+    "id": "CPC:B25J11/0015",
+    "scheme": "CPC",
+    "symbol": "B25J11/0015",
+    "label": "Artificial faces",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J11/0015"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J11/003": {
+    "id": "CPC:B25J11/003",
+    "scheme": "CPC",
+    "symbol": "B25J11/003",
+    "label": "Entertainment",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J11/003",
+      "B25J11/0035",
+      "B25J11/004"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J11/008": {
+    "id": "CPC:B25J11/008",
+    "scheme": "CPC",
+    "symbol": "B25J11/008",
+    "label": "Service",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J11/008",
+      "B25J11/0085",
+      "B25J11/009"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J13/08": {
+    "id": "CPC:B25J13/08",
+    "scheme": "CPC",
+    "symbol": "B25J13/08",
+    "label": "Sensor feedback",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J13/08",
+      "B25J13/081",
+      "B25J13/082",
+      "B25J13/083",
+      "B25J13/084",
+      "B25J13/085",
+      "B25J13/086",
+      "B25J13/087",
+      "B25J13/088",
+      "B25J13/089"
+    ],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J13/085": {
+    "id": "CPC:B25J13/085",
+    "scheme": "CPC",
+    "symbol": "B25J13/085",
+    "label": "Force sensing",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J13/085"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J15/0009": {
+    "id": "CPC:B25J15/0009",
+    "scheme": "CPC",
+    "symbol": "B25J15/0009",
+    "label": "Articulated fingers",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J15/0009"
+    ],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J19/0008": {
+    "id": "CPC:B25J19/0008",
+    "scheme": "CPC",
+    "symbol": "B25J19/0008",
+    "label": "Balancing",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J19/0008",
+      "B25J19/0012",
+      "B25J19/0016",
+      "B25J19/002"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J19/0091": {
+    "id": "CPC:B25J19/0091",
+    "scheme": "CPC",
+    "symbol": "B25J19/0091",
+    "label": "Shock absorption",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J19/0091"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J19/06": {
+    "id": "CPC:B25J19/06",
+    "scheme": "CPC",
+    "symbol": "B25J19/06",
+    "label": "Safety",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J19/06",
+      "B25J19/061",
+      "B25J19/063",
+      "B25J19/065",
+      "B25J19/066",
+      "B25J19/068"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ]
+  },
+  "CPC:B25J5/00": {
+    "id": "CPC:B25J5/00",
+    "scheme": "CPC",
+    "symbol": "B25J5/00",
+    "label": "Mobile base",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ],
+    "main_group_prefix": "B25J5/"
+  },
+  "CPC:B25J9/00": {
+    "id": "CPC:B25J9/00",
+    "scheme": "CPC",
+    "symbol": "B25J9/00",
+    "label": "Programmable manipulator",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ],
+    "main_group_prefix": "B25J9/"
+  },
+  "CPC:B25J11/00": {
+    "id": "CPC:B25J11/00",
+    "scheme": "CPC",
+    "symbol": "B25J11/00",
+    "label": "Other manipulators",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ],
+    "main_group_prefix": "B25J11/"
+  },
+  "CPC:B25J17/00": {
+    "id": "CPC:B25J17/00",
+    "scheme": "CPC",
+    "symbol": "B25J17/00",
+    "label": "Joints",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ],
+    "main_group_prefix": "B25J17/"
+  },
+  "CPC:B25J18/00": {
+    "id": "CPC:B25J18/00",
+    "scheme": "CPC",
+    "symbol": "B25J18/00",
+    "label": "Arms",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ],
+    "main_group_prefix": "B25J18/"
+  },
+  "IPC:B25J5/00": {
+    "id": "IPC:B25J5/00",
+    "scheme": "IPC",
+    "symbol": "B25J5/00",
+    "label": "Mobile base",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ],
+    "main_group_prefix": "B25J5/"
+  },
+  "IPC:B25J9/00": {
+    "id": "IPC:B25J9/00",
+    "scheme": "IPC",
+    "symbol": "B25J9/00",
+    "label": "Programmable manipulator",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ],
+    "main_group_prefix": "B25J9/"
+  },
+  "IPC:B25J11/00": {
+    "id": "IPC:B25J11/00",
+    "scheme": "IPC",
+    "symbol": "B25J11/00",
+    "label": "Other manipulators",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ],
+    "main_group_prefix": "B25J11/"
+  },
+  "IPC:B25J13/00": {
+    "id": "IPC:B25J13/00",
+    "scheme": "IPC",
+    "symbol": "B25J13/00",
+    "label": "Control",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ],
+    "main_group_prefix": "B25J13/"
+  },
+  "IPC:B25J15/00": {
+    "id": "IPC:B25J15/00",
+    "scheme": "IPC",
+    "symbol": "B25J15/00",
+    "label": "End effectors",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ],
+    "main_group_prefix": "B25J15/"
+  },
+  "IPC:B25J17/00": {
+    "id": "IPC:B25J17/00",
+    "scheme": "IPC",
+    "symbol": "B25J17/00",
+    "label": "Joints",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ],
+    "main_group_prefix": "B25J17/"
+  },
+  "IPC:B25J18/00": {
+    "id": "IPC:B25J18/00",
+    "scheme": "IPC",
+    "symbol": "B25J18/00",
+    "label": "Arms",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ],
+    "main_group_prefix": "B25J18/"
+  },
+  "IPC:B25J19/00": {
+    "id": "IPC:B25J19/00",
+    "scheme": "IPC",
+    "symbol": "B25J19/00",
+    "label": "Accessories",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ],
+    "main_group_prefix": "B25J19/"
+  },
+  "IPC:G06N3/00": {
+    "id": "IPC:G06N3/00",
+    "scheme": "IPC",
+    "symbol": "G06N3/00",
+    "label": "Bio-inspired computation",
+    "match_mode": "main_group",
+    "symbols": [],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_g06n"
+    ],
+    "main_group_prefix": "G06N3/"
+  },
+  "IPC:B62D57/032": {
+    "id": "IPC:B62D57/032",
+    "scheme": "IPC",
+    "symbol": "B62D57/032",
+    "label": "Stepping",
+    "match_mode": "exact",
+    "symbols": [
+      "B62D57/032"
+    ],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b62d"
+    ]
+  },
+  "IPC:B62D57/02": {
+    "id": "IPC:B62D57/02",
+    "scheme": "IPC",
+    "symbol": "B62D57/02",
+    "label": "Ground locomotion",
+    "match_mode": "exact",
+    "symbols": [
+      "B62D57/02"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b62d"
+    ]
+  },
+  "IPC:B62D57/028": {
+    "id": "IPC:B62D57/028",
+    "scheme": "IPC",
+    "symbol": "B62D57/028",
+    "label": "Wheels and legs",
+    "match_mode": "exact",
+    "symbols": [
+      "B62D57/028"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b62d"
+    ]
+  },
+  "IPC:G06N3/008": {
+    "id": "IPC:G06N3/008",
+    "scheme": "IPC",
+    "symbol": "G06N3/008",
+    "label": "Physical artificial life",
+    "match_mode": "exact",
+    "symbols": [
+      "G06N3/008"
+    ],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_g06n"
+    ]
+  },
+  "IPC:B25J9/06": {
+    "id": "IPC:B25J9/06",
+    "scheme": "IPC",
+    "symbol": "B25J9/06",
+    "label": "Articulated arms",
+    "match_mode": "exact",
+    "symbols": [
+      "B25J9/06"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ]
+  },
+  "IPC:B25J9/10": {
+    "id": "IPC:B25J9/10",
+    "scheme": "IPC",
+    "symbol": "B25J9/10",
+    "label": "Positioning",
+    "match_mode": "exact",
+    "symbols": [
+      "B25J9/10"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ]
+  },
+  "IPC:B25J9/12": {
+    "id": "IPC:B25J9/12",
+    "scheme": "IPC",
+    "symbol": "B25J9/12",
+    "label": "Electric drive",
+    "match_mode": "exact",
+    "symbols": [
+      "B25J9/12"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ]
+  },
+  "IPC:B25J9/14": {
+    "id": "IPC:B25J9/14",
+    "scheme": "IPC",
+    "symbol": "B25J9/14",
+    "label": "Fluid drive",
+    "match_mode": "exact",
+    "symbols": [
+      "B25J9/14"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ]
+  },
+  "IPC:B25J9/16": {
+    "id": "IPC:B25J9/16",
+    "scheme": "IPC",
+    "symbol": "B25J9/16",
+    "label": "Programmed control",
+    "match_mode": "exact",
+    "symbols": [
+      "B25J9/16"
+    ],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ]
+  },
+  "IPC:B25J13/08": {
+    "id": "IPC:B25J13/08",
+    "scheme": "IPC",
+    "symbol": "B25J13/08",
+    "label": "Sensor feedback",
+    "match_mode": "exact",
+    "symbols": [
+      "B25J13/08"
+    ],
+    "priority": "core",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ]
+  },
+  "IPC:B25J15/10": {
+    "id": "IPC:B25J15/10",
+    "scheme": "IPC",
+    "symbol": "B25J15/10",
+    "label": "Fingers",
+    "match_mode": "exact",
+    "symbols": [
+      "B25J15/10"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ]
+  },
+  "IPC:B25J17/02": {
+    "id": "IPC:B25J17/02",
+    "scheme": "IPC",
+    "symbol": "B25J17/02",
+    "label": "Wrist",
+    "match_mode": "exact",
+    "symbols": [
+      "B25J17/02"
+    ],
+    "priority": "expanded",
+    "warning": "Not specific to humanoids",
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "ipc_b25j"
+    ]
+  },
+  "CPC:B25J11/0085": {
+    "id": "CPC:B25J11/0085",
+    "scheme": "CPC",
+    "symbol": "B25J11/0085",
+    "label": "Cleaning service manipulators",
+    "match_mode": "scheme_subtree",
+    "symbols": [
+      "B25J11/0085"
+    ],
+    "status": "candidate_for_validation",
+    "source_ids": [
+      "cpc_b25j"
+    ],
+    "warning": "Cleaning robots are not necessarily humanoids"
+  }
+}

@@ -1,0 +1,29 @@
+# PATSTAT data are licensed: they stay on TIP and never enter git.
+outputs/
+data/
+*.csv
+*.csv.gz
+*.gz
+*.parquet
+*.pkl
+*.pickle
+*.html
+*.png
+*.xlsx
+# ...except our hand labels (family ID and label only, no text).
+!labels/*.csv
+# ...and the list of the sector (family IDs only, no text), which every notebook of the group reads.
+!ids/*.csv
+
+# OECD Patent Quality Indicators: given on request by the OECD, they stay on TIP too.
+*.7z
+*OECD_PATENT_QUALITY*
+# Secrets: keys are read from environment variables, never written in a file.
+.env
+*.key
+
+# Python and Jupyter
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+*.pyc
