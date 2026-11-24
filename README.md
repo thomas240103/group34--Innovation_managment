@@ -4,7 +4,7 @@ Innovation Management, Politecnico di Torino, 2026/27. Sector: humanoid robots. 
 
 **The question.** Electrolux wants to know how the humanoid-robot sector is doing, which segments are growing, and which emerging players are worth buying or partnering with. We answer with patent data from PATSTAT, on the EPO TIP platform.
 
-**Status (24 November 2026).** Steps 0-2 are final. Steps 3-4 are Thomas's and Leo's: Imma's drafts are in `handoff_step3_4/`, to be merged with their work.
+**Status (24 November 2026).** Steps 0-2 are final. Steps 3-4 are Thomas's and Leo's: Imma's Step 3 draft is in `handoff_step3_4/`, to be merged with their work.
 
 ## Contents
 
@@ -15,7 +15,7 @@ Innovation Management, Politecnico di Torino, 2026/27. Sector: humanoid robots. 
 | `step2_concentration_subfields.ipynb` | **Step 2.** Concentration, leaders and entrants, growing subfields, PEST for Electrolux |
 | `t2_20_epab_humanoid.ipynb`, `t2_21_text_humanoid.ipynb` | **Tutorial 2** (Leo): EP full text and search reports; patent text, topics and novelty |
 | `wide_net/` | Thomas's robotics search to 2025 (239,711 families) with the sector inside: the training sample for Step 4 |
-| `handoff_step3_4/` | Imma's Step 3 (present score), the Step 4 skeleton and the check of the search reports, with a README for Thomas and Leo |
+| `handoff_step3_4/` | Imma's Step 3 (present score) and the check of the search reports for Step 4, with a README for Thomas and Leo |
 | `docs/` | `methods_and_results.md` (all details), `step4_literature.md` (papers and how to use them), `step4_plan_imma.md`, `external_data.md` |
 | `config/`, `src/`, `tests/` | The sector rule, the code shared by the notebooks, and its tests |
 | `labels/`, `ids/` | Our hand labels and the list of the 2,907 families (IDs only, no texts) |
@@ -42,4 +42,4 @@ PATSTAT data are licensed and stay on TIP: no data file, no reading sheet with t
 
 ## Who did what
 
-The frame (sector rule v3, its validation, Steps 0-2, the Step 3 and Step 4 drafts) is Imma's. **Thomas:** the wide net, the subfield patterns, the panel of firms, the alias table. **Leo:** the Tutorial 2 notebooks on patent text, the code structure (config, src, tests). **Mostafa:** an independent rerun of rule v3 on PATSTAT that finds the same 1,281 families of 2000-2022 (a check of reproducibility). Steps 3-4 are now Thomas's and Leo's. Details in `docs/methods_and_results.md`.
+The frame (sector rule v3, its validation, Steps 0-2, the Step 3 draft) is Imma's. **Thomas:** the wide net, the subfield patterns, the panel of firms, the alias table. **Leo:** the Tutorial 2 notebooks on patent text, the code structure (config, src, tests). **Mostafa:** an independent rerun of rule v3 on PATSTAT that finds the same 1,281 families of 2000-2022 (a check of reproducibility). Steps 3-4 are now Thomas's and Leo's. Details in `docs/methods_and_results.md`.
