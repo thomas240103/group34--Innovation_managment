@@ -106,7 +106,7 @@ def family_today_table(
     fam["first_office_group"] = np.where(fam["first_office"].eq("CN"), "CN", "other")
     fam["offices"] = national.groupby("docdb_family_id")["appln_auth"].nunique().reindex(fam.index).fillna(1)
     has_wo = a[a["appln_auth"].eq("WO")].groupby("docdb_family_id").size().gt(0)
-    fam["has_pct"] = has_wo.reindex(fam.index).fillna(False).astype(bool)
+    fam["has_pct"] = has_wo.reindex(fam.index, fill_value=False).astype(bool)
     fam["is_alive"] = alive.reindex(fam.index).fillna(False).astype(bool)
 
     # Volume: depreciated living stock

@@ -267,7 +267,10 @@ def compute_causal_science_proximity(
             rrf_scores = 1.0 / (rrf_k + bm25_ranks)
 
         k_eff = min(top_k, len(valid_idx))
-        top_local = np.argsort(-rrf_scores)[:k_eff]
+        # Ties of the fused rank are broken by the dense cosine (then the BM25 score), never by the order of the
+        # papers in the table: with few papers, BM25 can give them identical scores and the RRF then ties exactly.
+        tie_break = cos_scores if use_dense else bm25_scores
+        top_local = np.lexsort((-bm25_scores, -tie_break, -rrf_scores))[:k_eff]
         top_global = valid_idx[top_local]
 
         best_year = int(paper_years[top_global[0]])
