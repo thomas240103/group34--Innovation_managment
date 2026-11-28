@@ -1,0 +1,48 @@
+# Group 34 · Humanoid robots for Electrolux: the shared configuration of the pipeline (kick-off: config/sector.yaml).
+# The sector RULE itself is in config/sector_rule_v3.yaml (read by src/sector_rule.py, checked against Step 0 by the
+# tests). This file holds the choices that several notebooks share, so that they are written once.
+# Read with src/config.py: load_config().
+
+sector:
+  name: Humanoid robots
+  client: Electrolux
+  rule_file: config/sector_rule_v3.yaml
+  family_ids: ids/sector_family_ids_v3_PROD.csv     # IDs only (no PATSTAT text): safe for git
+
+window:
+  year_min: 2000
+  year_max: 2025
+  last_complete_year: 2022          # priority years after this are still being published (18-month lag)
+  reference_year: 2026              # "today" for living patents and depreciated stocks
+
+present_score:                      # Step 3, Sections 5-9 (course indicators) and Section 11 (quadrant)
+  weights: {Influence: 0.35, Globalization: 0.25, Success: 0.20, Volume: 0.20}
+  depreciation: 0.15                # yearly depreciation of the patent stock (Hall, Jaffe & Trajtenberg 2005)
+  min_families_per_indicator: 5     # Section 11: fewer families -> the indicator is left empty
+  min_indicators: 2                 # Section 11: fewer -> no score (2 or 3 of 4 -> flagged provisional)
+
+quadrant:                           # the common set of firms scored on BOTH axes (Step 3 Section 11, Step 4 Section 7)
+  min_sector_families: 10           # a firm with at least this many families in the sector (any year) is in the set
+  min_recent_families: 5            # ... or at least this many since recent_from
+  recent_from: 2022
+  pure_play_players:                # humanoid makers whose patents rarely say "humanoid robot" in the title (Step 3, 2.4)
+    - BOSTON DYNAMICS
+    - UNITREE
+    - 1X TECHNOLOGIES
+    - AGILITY ROBOTICS
+    - APPTRONIK
+    - FIGURE AI
+    - AGIBOT
+  extension_from_year: 2015         # their robotics families (IPC B25J, B62D57, G05D) from this priority year
+  extension_min_precision: 0.80     # blind reading of 40 extension families: below this, the extension is not used
+  extension_sample: 40
+  extension_seed: 39
+
+future_score:                       # Step 4
+  apply_years: [2022, 2025]
+  validation_years: [2014, 2015]    # choose the model here ...
+  test_years: [2016, 2017]          # ... report it here (never chosen on these years)
+  calibration_year: 2017            # isotonic calibration of the final model, held out from its training
+  feature_age_months: 18            # point-in-time features: what is known 18 months after the first priority
+  shrinkage_strength: 10            # firm mean probability shrunk towards the sector prior with this many pseudo-families
+  weights: {quality: 0.5, scale: 0.3, momentum: 0.2}

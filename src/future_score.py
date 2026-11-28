@@ -526,3 +526,153 @@ def aggregate_firm_future_scores(
     e_rank = out["expected_breakthroughs"].rank(pct=True)
     out["future_score_quality_breakthrough"] = (0.40 * q_rank + 0.35 * b_rank + 0.25 * e_rank) * 100.0
     return out.sort_values("future_score_quality_breakthrough", ascending=False)
+
+
+# ---------------------------------------------------------------------------
+# 6. Review fixes (Dec 2026): office-aware target, point-in-time features, honest comparison,
+#    calibration, distribution shift, firm-level backtest
+# ---------------------------------------------------------------------------
+def label_top_decile_hierarchical(
+    df: pd.DataFrame,
+    value_col: str = "fwd_cites_5y",
+    levels: Sequence[Sequence[str]] = (("priority_year", "main_subclass", "first_office_group"),
+                                       ("priority_year", "main_subclass"), ("priority_year",)),
+    top_share: float = 0.10,
+    min_cohort: int = 30,
+) -> Tuple[pd.Series, pd.Series]:
+    """Top-`top_share` flag inside the finest cohort with at least `min_cohort` families.
+
+    Adding the office of first filing to the cohort removes the office habits of citation (Chinese families are cited
+    mostly by Chinese families; US applicants cite more) from the target, as the course asks for citations.
+    The last level is used whatever its size. Uncited families are never in the top.
+    """
+    cohort = pd.Series(np.nan, index=df.index, dtype=object)
+    for i, cols in enumerate(levels):
+        key = df[list(cols)].astype(str).agg("|".join, axis=1)
+        size = key.map(key.value_counts())
+        last = i == len(levels) - 1
+        use = cohort.isna() & ((size >= min_cohort) if not last else True)
+        cohort[use] = key[use]
+    thresh = df.groupby(cohort)[value_col].transform(lambda s: s.quantile(1.0 - top_share))
+    y = ((df[value_col] >= thresh) & (df[value_col] > 0)).astype(int)
+    return y, cohort
+
+
+def early_rows(df: pd.DataFrame, days_col: str = "days_from_prio", max_days: int = 366) -> pd.DataFrame:
+    """Rows dated at most `max_days` after the first priority (missing dates count as day 0, the first filing)."""
+    return df[df[days_col].fillna(0) <= max_days]
+
+
+def paired_bootstrap_diff(
+    y_true: np.ndarray,
+    score_a: np.ndarray,
+    score_b: np.ndarray,
+    metric_key: str = "PR_AUC",
+    n_boot: int = 1000,
+    seed: int = 34,
+) -> Dict[str, float]:
+    """Difference metric(B) - metric(A) on the SAME families, with a paired bootstrap 95% CI and a one-sided p-value.
+
+    p = share of bootstrap draws where B is not better than A. Two separate CIs that overlap say nothing about the
+    difference; this does.
+    """
+    y = np.asarray(y_true, dtype=int)
+    a = np.asarray(score_a, dtype=float)
+    b = np.asarray(score_b, dtype=float)
+    ok = np.isfinite(a) & np.isfinite(b)
+    y, a, b = y[ok], a[ok], b[ok]
+    point = precision_recall_lift_at_k(y, b)[metric_key] - precision_recall_lift_at_k(y, a)[metric_key]
+    rng = np.random.default_rng(seed)
+    diffs = []
+    n = len(y)
+    for _ in range(n_boot):
+        idx = rng.integers(0, n, size=n)
+        yb = y[idx]
+        if yb.sum() == 0 or yb.sum() == n:
+            continue
+        diffs.append(precision_recall_lift_at_k(yb, b[idx])[metric_key] - precision_recall_lift_at_k(yb, a[idx])[metric_key])
+    diffs = np.asarray(diffs)
+    if not len(diffs):
+        return {"diff": point, "ci_low": np.nan, "ci_high": np.nan, "p_not_better": np.nan, "n": n}
+    return {"diff": float(point), "ci_low": float(np.percentile(diffs, 2.5)), "ci_high": float(np.percentile(diffs, 97.5)),
+            "p_not_better": float((diffs <= 0).mean()), "n": int(n)}
+
+
+def fit_isotonic_calibrator(y_true: np.ndarray, scores: np.ndarray):
+    """Isotonic calibration (Zadrozny & Elkan 2002) fitted on a held-out year: maps a score to a probability."""
+    from sklearn.isotonic import IsotonicRegression
+
+    iso = IsotonicRegression(out_of_bounds="clip", y_min=0.0, y_max=1.0)
+    iso.fit(np.asarray(scores, dtype=float), np.asarray(y_true, dtype=float))
+    return iso
+
+
+def reliability_table(y_true: np.ndarray, probs: np.ndarray, n_bins: int = 10) -> Tuple[pd.DataFrame, float, float]:
+    """Calibration by decile of predicted probability, the expected calibration error and the Brier score."""
+    y = np.asarray(y_true, dtype=float)
+    p = np.asarray(probs, dtype=float)
+    ok = np.isfinite(p)
+    y, p = y[ok], p[ok]
+    bins = pd.qcut(pd.Series(p).rank(method="first"), q=min(n_bins, len(p)), labels=False)
+    tab = pd.DataFrame({"bin": bins.to_numpy(), "p": p, "y": y}).groupby("bin").agg(
+        families=("y", "size"), mean_predicted=("p", "mean"), observed_rate=("y", "mean"))
+    ece = float((tab["families"] / tab["families"].sum() * (tab["mean_predicted"] - tab["observed_rate"]).abs()).sum())
+    brier = float(np.mean((p - y) ** 2))
+    return tab, ece, brier
+
+
+def population_stability_index(expected: pd.Series, actual: pd.Series, n_bins: int = 10) -> float:
+    """PSI between the training distribution of a feature and the distribution of the families we score.
+
+    < 0.1 stable, 0.1-0.25 moderate shift, > 0.25 large shift (usual credit-scoring reading).
+    """
+    e = pd.Series(expected, dtype=float).dropna()
+    a = pd.Series(actual, dtype=float).dropna()
+    if len(e) < 10 or len(a) < 10:
+        return np.nan
+    edges = np.unique(np.quantile(e, np.linspace(0, 1, n_bins + 1)))
+    if len(edges) < 3:                                    # (almost) constant feature: compare the shares directly
+        vals = sorted(set(e.unique()) | set(a.unique()))
+        pe = e.value_counts(normalize=True).reindex(vals).fillna(0).to_numpy()
+        pa = a.value_counts(normalize=True).reindex(vals).fillna(0).to_numpy()
+    else:
+        edges[0], edges[-1] = -np.inf, np.inf
+        pe = np.histogram(e, bins=edges)[0] / len(e)
+        pa = np.histogram(a, bins=edges)[0] / len(a)
+    pe, pa = np.clip(pe, 1e-4, None), np.clip(pa, 1e-4, None)
+    return float(np.sum((pa - pe) * np.log(pa / pe)))
+
+
+def adversarial_validation_auc(X_train: pd.DataFrame, X_score: pd.DataFrame, random_state: int = 34) -> float:
+    """Cross-validated ROC-AUC of a classifier that tries to tell training families from the families we score.
+
+    0.5 = indistinguishable (no shift); close to 1 = the scored families look nothing like the training ones, so the
+    model extrapolates and its probabilities must be read with care.
+    """
+    from sklearn.model_selection import StratifiedKFold, cross_val_score
+
+    X = pd.concat([X_train, X_score], ignore_index=True)
+    y = np.r_[np.zeros(len(X_train)), np.ones(len(X_score))]
+    clf = Pipeline([("impute", SimpleImputer(strategy="median", add_indicator=True, keep_empty_features=True)),
+                    ("model", RandomForestClassifier(n_estimators=150, max_depth=6, min_samples_leaf=20,
+                                                     random_state=random_state, n_jobs=-1))])
+    cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=random_state)
+    return float(np.mean(cross_val_score(clf, X, y, cv=cv, scoring="roc_auc")))
+
+
+def spearman_with_ci(x: pd.Series, y: pd.Series, n_boot: int = 1000, seed: int = 34) -> Dict[str, float]:
+    """Spearman correlation between two firm-level series with a bootstrap 95% CI (firms resampled)."""
+    from scipy import stats as _st
+
+    d = pd.concat([pd.Series(x), pd.Series(y)], axis=1).dropna()
+    if len(d) < 5:
+        return {"rho": np.nan, "ci_low": np.nan, "ci_high": np.nan, "firms": len(d)}
+    rho = _st.spearmanr(d.iloc[:, 0], d.iloc[:, 1])[0]
+    rng = np.random.default_rng(seed)
+    vals = []
+    for _ in range(n_boot):
+        s = d.iloc[rng.integers(0, len(d), size=len(d))]
+        if s.iloc[:, 0].nunique() > 1 and s.iloc[:, 1].nunique() > 1:
+            vals.append(_st.spearmanr(s.iloc[:, 0], s.iloc[:, 1])[0])
+    lo, hi = (np.percentile(vals, [2.5, 97.5]) if vals else (np.nan, np.nan))
+    return {"rho": float(rho), "ci_low": float(lo), "ci_high": float(hi), "firms": int(len(d))}
